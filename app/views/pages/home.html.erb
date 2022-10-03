@@ -1,0 +1,53 @@
+
+
+<div class ="container">
+<div class="text-bg-secondary p-3">
+
+    <% if current_user %>
+     <h2><span class="badge rounded-pill bg-dark"><%= current_user.role%></span></h2>
+      <h2>Welcome Back <%= current_user.username%></h2>
+
+
+      
+      
+      
+     
+     
+
+
+
+
+      <br>
+      <br>
+      <% if current_user.role == 'developer'%>
+         <h1 align="center"><%= link_to "Check Assigned Projects", projects_path, :class => "btn btn-outline-info"%></h1>
+         <h1 align="center"><%= link_to "Check Assigned Bugs", bugs_path, :class => "btn btn-outline-info"%></h1>
+      <% end %>
+      <% if current_user.role == 'qa'%>
+        <h1 align="center"><%= link_to "Check Assigned Projects", projects_path, :class => "btn btn-outline-info"%></h1>
+        <h1 align="center"><%= link_to "Check Created Bugs", bugs_path, :class => "btn btn-outline-info"%></h1>
+        <h1 align="center"><%= link_to "Create Bug", new_bug_path, :class => "btn btn-outline-primary"%></h1>
+      <% end %>
+      <% if current_user.role == 'manager'%>
+        <h1 align="center"><%= link_to "Check Created Projects", projects_path, :class => "btn btn-outline-info"%></h1>
+        <h1 align="center"><%= link_to "Create Project", new_project_path, :class => "btn btn-outline-primary"%></h1>
+      <% end %>
+      <hr>
+      <h4 align="center">OR</h4>
+      <nav class="navbar navbar-light bg-light">
+       <form class="container-fluid justify-content-start">
+       <button class="btn btn-outline-success me-2" type="button"><%= link_to "Log out!", destroy_user_session_path, 'data-turbo-method': :delete, :class => "btn"%></button>
+      </form>
+      </nav>
+      
+    <% else %>
+      <h1>Welcome to Bug Tracker</h1>
+   <nav class="navbar navbar-light bg-light">
+    <form class="container-fluid justify-content-start">
+      <button class="btn btn-outline-success me-2" type="button"><%= link_to "Sign up!", new_user_registration_path, :class => "btn" %></button>
+      <button class="btn btn-sm btn-outline-secondary" type="button"><%= link_to "Log in!!", new_user_session_path, :class => "btn" %></button>
+    </form>
+   </nav>
+    <% end %>
+    </div>
+</div>

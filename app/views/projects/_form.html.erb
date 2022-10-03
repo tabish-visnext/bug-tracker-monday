@@ -1,0 +1,43 @@
+
+
+
+<div class="container">
+<%= bootstrap_form_for(@p, :html => {class: "form-horizontal", role: "form"}) do |f|%>
+                                        
+    <div class="form-group col-md-8">
+      <p>
+         <%= f.text_field :projectname%>
+      </p>
+
+      
+      <p>
+         <%= f.text_field :description%>
+      </p>
+
+
+      <p>
+      <%= f.text_field :assignee_id, data: { numeric: true } %>
+      </p>
+
+
+      <p>
+      <%= f.collection_select(:user_projects, User.developer, :id, :username, {:multiple => :multiple}, :prompt => "Please Select a developer") %>
+      </p>
+
+      <p>
+      <%= f.collection_select(:user_projects, User.qa, :id, :username, :prompt => "Please Select a qa", multiple: true) %>
+      </p>
+     
+
+      <p>
+           <%= f.submit "Submit Project"%>
+       </p>
+
+       
+
+       <%end%>
+
+       
+      
+       </div>
+</div>

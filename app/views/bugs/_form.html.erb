@@ -1,0 +1,38 @@
+
+<div class="container">
+<%= bootstrap_form_for(@b, :html => {class: "form-horizontal", role: "form"}) do |f|%>
+    
+    <div class="form-group col-md-8">
+      <p>
+         <%= f.text_field :title%>
+      </p>
+
+      
+      <p>
+         <%= f.text_field :status%>
+      </p>
+
+      <p>
+         <%= f.text_field :bug_type%>
+      </p>
+
+      <p>
+        <%= f.text_field :assignee_id, data: { numeric: true } %>
+      </p>
+
+      <p>
+         <%= f.text_field :project_id, data: { numeric: true } %>
+      </p>
+      
+     
+
+      <p>
+         <%= f.submit "Submit Bug"%>
+      </p>
+
+       <%end%>
+
+       
+      
+       </div>
+</div>
